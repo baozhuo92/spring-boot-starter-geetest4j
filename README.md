@@ -29,7 +29,7 @@
 <dependency>
     <groupId>io.github.baozhuo92</groupId>
     <artifactId>spring-boot-starter-geetest4j</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.1-RELEASE</version>
 </dependency>
 ```
 ### 2. 配置极验参数

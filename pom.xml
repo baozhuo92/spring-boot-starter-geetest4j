@@ -21,15 +21,14 @@
             <url>https://www.opensource.org/licenses/mit-license.php</url>
             <distribution>repo</distribution>
         </license>
-
     </licenses>
-<!--
+
     <distributionManagement>
         <repository>
             <id>custom_releases</id>
             <url>https://maven.520527.xyz:18443/repository/kelebb_relese/</url>
         </repository>
-    </distributionManagement>-->
+    </distributionManagement>
 
     <developers>
         <developer>
