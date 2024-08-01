@@ -28,9 +28,9 @@ public class StateDetectionTack {
     public void run() {
 
         if (geetestProperties.getCheck_status_interval() != null) {
-
-            String cronStr = "*/" + geetestProperties.getCheck_status_interval() + " * * * * *";
-
+            int check_status_interval = geetestProperties.getCheck_status_interval();
+            check_status_interval = check_status_interval <= 0 ? 30 : check_status_interval;
+            String cronStr = "*/" + check_status_interval + " * * * * *"; // 每隔check_status_interval秒执行一次
             CronUtil.schedule(cronStr, new Task() {
                 @Override
                 public void execute() {

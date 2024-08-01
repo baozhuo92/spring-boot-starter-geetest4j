@@ -14,6 +14,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class GeetestProperties {
     String id;
     String key;
-    Long check_status_interval;
-
+    Integer check_status_interval;
 }
