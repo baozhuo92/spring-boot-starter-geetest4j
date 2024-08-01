@@ -37,7 +37,12 @@ public class StateDetectionTack {
                     BehaviorVerification3ServiceImpl behaviorVerification3Service = new BehaviorVerification3ServiceImpl();
                     behaviorVerification3Service.setGeetestProperties(geetestProperties);
                     BypassStatusResult bypassStatusResult = behaviorVerification3Service.ServiceStatusDetection();
-                    GeetestConstant.BYPASS_STATUS = new StringBuffer(bypassStatusResult.getStatus());
+                    if (bypassStatusResult.getStatus().equals("success")){
+                        GeetestConstant.BYPASS_STATUS = Boolean.TRUE;
+                    }else {
+                        GeetestConstant.BYPASS_STATUS = Boolean.TRUE;
+                    }
+
                 }
             });
             CronUtil.setMatchSecond(true);

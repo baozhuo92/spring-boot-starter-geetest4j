@@ -36,9 +36,9 @@ public class BehaviorVerification3ServiceImpl implements IBehaviorVerification3S
     public RegisterResult register(RegisterParam registerParam) {
         StringBuilder url = new StringBuilder(GeetestConstant.REGISTER_URL);
         url.append("?gt=").append(geetestProperties.getId())
-                .append("&user_id=").append(registerParam.getUser_id())
-                .append("&client_type=").append(StrUtil.isEmpty(registerParam.getClient_type()) ? "web" : registerParam.getClient_type())
-                .append("&ip_address=").append(StrUtil.isEmpty(registerParam.getIp_address())? "127.0.0.1" : registerParam.getIp_address())
+                .append("&user_id=").append(registerParam.getUserId())
+                .append("&client_type=").append(StrUtil.isEmpty(registerParam.getClientType()) ? "web" : registerParam.getClientType())
+                .append("&ip_address=").append(StrUtil.isEmpty(registerParam.getIpAddress())? "127.0.0.1" : registerParam.getIpAddress())
                 .append("&digestmod=").append("md5")
                 .append("&json_format=").append("1")
                 .append("&sdk=").append("jave-servlet:3.1.1");
@@ -52,10 +52,10 @@ public class BehaviorVerification3ServiceImpl implements IBehaviorVerification3S
 
         StringBuilder url = new StringBuilder(GeetestConstant.VALIDATE_URL);
         url
-                .append("?user_id=").append(validateParam.getUser_id())
-                .append("&client_type=").append(StrUtil.isEmpty(validateParam.getClient_type())? "web" : validateParam.getClient_type())
-                .append("&ip_address=").append(StrUtil.isEmpty(validateParam.getIp_address())? "127.0.0.1" : validateParam.getIp_address())
-                .append("&seccode=").append(validateParam.getSeccode())
+                .append("?user_id=").append(validateParam.getUserId())
+                .append("&client_type=").append(StrUtil.isEmpty(validateParam.getClientType())? "web" : validateParam.getClientType())
+                .append("&ip_address=").append(StrUtil.isEmpty(validateParam.getIpAddress())? "127.0.0.1" : validateParam.getIpAddress())
+                .append("&seccode=").append(validateParam.getSecCode())
                 .append("&challenge=").append(validateParam.getChallenge())
                 .append("&captchaid=").append(geetestProperties.getId())
                 .append("&json_format=").append("1")

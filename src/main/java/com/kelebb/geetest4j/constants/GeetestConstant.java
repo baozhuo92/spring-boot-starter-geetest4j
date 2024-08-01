@@ -13,6 +13,6 @@ public class GeetestConstant {
 
     public static final String VALIDATE_URL="http://api.geetest.com/validate.php";
 
-    public static StringBuffer BYPASS_STATUS = new StringBuffer("fail");
+    public static Boolean BYPASS_STATUS = Boolean.FALSE;
 
 }
