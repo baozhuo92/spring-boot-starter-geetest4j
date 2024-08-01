@@ -40,7 +40,7 @@ public class StateDetectionTack {
                     if (bypassStatusResult.getStatus().equals("success")){
                         GeetestConstant.BYPASS_STATUS = Boolean.TRUE;
                     }else {
-                        GeetestConstant.BYPASS_STATUS = Boolean.TRUE;
+                        GeetestConstant.BYPASS_STATUS = Boolean.FALSE;
                     }
 
                 }
