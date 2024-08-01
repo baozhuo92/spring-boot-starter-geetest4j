@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.github.baozhuo92</groupId>
     <artifactId>spring-boot-starter-geetest4j</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.1-RELEASE</version>
     <name>spring-boot-starter-geetest4j</name>
     <packaging>jar</packaging>
     <description>spring-boot-starter-geetest4j</description>
