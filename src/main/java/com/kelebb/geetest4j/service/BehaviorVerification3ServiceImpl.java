@@ -23,13 +23,17 @@ public class BehaviorVerification3ServiceImpl implements IBehaviorVerification3S
         this.geetestProperties = geetestProperties;
     }
 
-    public BypassStatusResult ServiceStatusDetection() {
+    public Boolean ServiceStatusDetection() {
         String url = GeetestConstant.BYPASS_STATUS_URL+"?gt="+geetestProperties.getId();
         HttpRequest request = HttpRequest.get(url);
         String result = request.execute().body();
         JSONObject resultJson = new JSONObject(result);
         BypassStatusResult bypassStatusResult = resultJson.toBean(BypassStatusResult.class);
-        return bypassStatusResult;
+        if (bypassStatusResult.getStatus().equals("success")) {
+            return Boolean.TRUE;
+        } else {
+            return  Boolean.FALSE;
+        }
     }
 
     public RegisterResult register(RegisterParam registerParam) {

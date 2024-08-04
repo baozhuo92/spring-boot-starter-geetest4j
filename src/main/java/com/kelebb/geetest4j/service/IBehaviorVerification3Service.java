@@ -13,7 +13,7 @@ import com.kelebb.geetest4j.result.ValidateResult;
  */
 public interface IBehaviorVerification3Service {
 
-    BypassStatusResult ServiceStatusDetection();
+    Boolean ServiceStatusDetection();
 
     RegisterResult register(RegisterParam registerParam);
 

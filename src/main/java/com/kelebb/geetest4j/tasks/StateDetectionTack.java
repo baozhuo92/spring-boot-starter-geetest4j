@@ -29,24 +29,19 @@ public class StateDetectionTack {
 
         if (geetestProperties.getCheck_status_interval() != null) {
             int check_status_interval = geetestProperties.getCheck_status_interval();
-            check_status_interval = check_status_interval <= 0 ? 30 : check_status_interval;
-            String cronStr = "*/" + check_status_interval + " * * * * *"; // 每隔check_status_interval秒执行一次
-            CronUtil.schedule(cronStr, new Task() {
-                @Override
-                public void execute() {
-                    BehaviorVerification3ServiceImpl behaviorVerification3Service = new BehaviorVerification3ServiceImpl();
-                    behaviorVerification3Service.setGeetestProperties(geetestProperties);
-                    BypassStatusResult bypassStatusResult = behaviorVerification3Service.ServiceStatusDetection();
-                    if (bypassStatusResult.getStatus().equals("success")){
-                        GeetestConstant.BYPASS_STATUS = Boolean.TRUE;
-                    }else {
-                        GeetestConstant.BYPASS_STATUS = Boolean.FALSE;
+            if(check_status_interval >= 0) {
+                String cronStr = "*/" + check_status_interval + " * * * * *"; // 每隔check_status_interval秒执行一次
+                CronUtil.schedule(cronStr, new Task() {
+                    @Override
+                    public void execute() {
+                        BehaviorVerification3ServiceImpl behaviorVerification3Service = new BehaviorVerification3ServiceImpl();
+                        behaviorVerification3Service.setGeetestProperties(geetestProperties);
+                        GeetestConstant.BYPASS_STATUS = behaviorVerification3Service.ServiceStatusDetection();
                     }
-
-                }
-            });
-            CronUtil.setMatchSecond(true);
-            CronUtil.start();
+                });
+                CronUtil.setMatchSecond(true);
+                CronUtil.start();
+            }
         }
     }
 

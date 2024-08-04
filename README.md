@@ -38,7 +38,7 @@ geetest:
   # 填写您申请的id和key
   id: 4f8d7418d52d11ec941e525400c04324
   key: 6c0d9a7b7a8d11ec941e525400c04324
-  # 可选，服务监控任务执行间隔，默认30s
+  # 服务监控任务执行间隔，大于0时按配置的秒数执行，设置为0或小于0时不执行定时任务
   check_status_interval: 30
 ``` 
     
@@ -54,7 +54,13 @@ private IBehaviorVerification3Service behaviorVerification3Service;
 
 //验证初始化
 public void init() {
+    
+    
     RegisterParam registerParam = new RegisterParam();
+    
+    // 如果没启动定时任务使用以下判断方式
+    // if(behaviorVerification3Service.ServiceStatusDetection()) 
+    // 如果使用了定时任务
     if (GeetestConstant.BYPASS_STATUS) {
         // 1. 验证初始化
         RegisterResult registerResult = behaviorVerification3Service.register(registerParam);
@@ -70,7 +76,10 @@ public void init() {
 //二次验证
 public void validate() {
     ValidateParam validateParam = new ValidateParam();
-    if (GeetestConstant.BYPASS_STATUS) {
+        // 如果没启动定时任务使用以下判断方式
+        // if(behaviorVerification3Service.ServiceStatusDetection()) 
+        // 如果使用了定时任务
+        if (GeetestConstant.BYPASS_STATUS) {
         // 2. 二次验证
         ValidateResult verify = behaviorVerification3Service.validate(validateParam);
         System.out.println("verify: " + verify);
@@ -111,9 +120,8 @@ public void validate() {
 
 ## 注意事项
 1. 需要使用极验的账号，并开通行为验证服务
-2. 
-
-
+2. 如果配置文件中的`check_status_interval`配置的值小于1时，讲不启动定时任务，需在业务代码前调用behaviorVerification3Service.ServiceStatusDetection()进行判断服务器状态
+ 
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
