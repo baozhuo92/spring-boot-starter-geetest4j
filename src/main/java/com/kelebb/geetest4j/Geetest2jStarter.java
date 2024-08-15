@@ -9,8 +9,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.Resource;
-
 @Configuration
 @ConditionalOnClass(Geetest2jStarter.class)
 @EnableConfigurationProperties(GeetestProperties.class)
@@ -21,8 +19,9 @@ public class Geetest2jStarter {
 
     @Bean
     @ConditionalOnMissingBean(StateDetectionTack.class)
-    public void setStateDetectionTack(){
+    public int setStateDetectionTack(){
         new StateDetectionTack(geetestProperties).run();
+        return 0;
     }
 
     @Bean
