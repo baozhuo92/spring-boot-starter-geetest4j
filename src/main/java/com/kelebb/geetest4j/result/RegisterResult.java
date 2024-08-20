@@ -9,6 +9,8 @@ import lombok.Data;
  */
 @Data
 public class RegisterResult {
+    String gt;
     // 流水号，一次完整验证流程的唯一标识
     String challenge;
+    boolean offline;
 }

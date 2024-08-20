@@ -47,6 +47,8 @@ public class BehaviorVerification3ServiceImpl implements IBehaviorVerification3S
         HttpRequest request = HttpRequest.get(url);
         String result = request.execute().body();
         JSONObject resultJson = new JSONObject(result);
+        resultJson.putOpt("gt", geetestProperties.getId());
+        resultJson.putOpt("offline", GeetestConstant.BYPASS_STATUS);
         return resultJson.toBean(RegisterResult.class);
     }
 
